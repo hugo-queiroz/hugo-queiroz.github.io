@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hugo Queiroz - Front-End & UI Designer</title>
+  <link rel="shortcut icon" href="assets/icons/logo.svg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;600;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      * {
+        @apply
+        antialiased
+        selection:bg-main_dark
+        selection:text-text
+      }
+      html, body {
+        @apply 
+        overflow-x-hidden
+        scroll-smooth
+      }
+      section {
+        @apply
+        py-28
+      }
+      .wrapper_wide {
+        @apply 
+        w-[80%]
+        mx-auto
+      }
+      .wrapper_hero {
+        @apply 
+        w-[85%]
+        xl:w-[75%]
+        2xl:w-[70%]
+        mx-auto
+      }
+      .wrapper {
+        @apply 
+        w-[80%]
+        xl:w-[70%]
+        1xl:w-[60%]
+        2xl:w-[50%]
+        mx-auto
+      }
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: '#0f9',
+            main_dark: '#0a8a56',
+            bg_light: '#323232',
+            bg: '#151515',
+            bg_dark: '#1c1c1c',
+            text: '#ddd',
+            text_dark: '#aaa',
+          },
+          backgroundImage: ({ theme }) => ({
+            noise: 'url("/assets/images/noise.svg")',
+            noise_hard: 'url("/assets/noise_hard.png")',
+            radial: 'radial-gradient(theme("colors.main"), transparent 70%)',
+            radial2: 'radial-gradient(theme("colors.main") -170%, transparent 70%)',
+            about_gradient: 'linear-gradient(45deg, #323232 -300%, #0f9, transparent 100%)',
+            // faixa_gradient: 'linear-gradient(90deg, theme("colors.bg"), transparent)',
+            // faixa_gradient_invert: 'linear-gradient(90deg, transparent, theme("colors.bg"))'
+          }),
+          fontFamily: {
+            sans: ['Barlow', 'system-ui'],
+          },
+          dropShadow: ({ theme }) => ({
+            main: '0 0 64px theme("colors.main_dark")',
+            sec: '0 0 32px theme("colors.main_dark")',
+            tert: '0 0 8px theme("colors.main_dark")',
+          }),
+          keyframes: {
+            infinite_horizontal_scroll: {
+              '0%': {
+                transform: 'translateX(0)'
+              },
+              '100%': {
+                transform: 'translateX(calc(-250px * 7))'
+              }
+            }
+          },
+          animation: {
+            'infinite_horizontal_scroll': 'infinite_horizontal_scroll 40s linear infinite'
+          },
+          screens: ({ theme }) => ({
+            'sm': { 'min': '640px' },
+            'md': { 'min': '768px' },
+            'lg': { 'min': '1024px' },
+            'xl': { 'min': '1280px' },
+            '1xl': { 'min': '1440px', 'max': 'theme("screens.2xl.min")' },
+            '2xl': { 'min': '1536px' },
+            '3xl': { 'min': '2160px' },
+          }),
+        },
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-bg">
+
+  <!-- header -->
+  <header class="w-full py-8 z-[999] fixed" id="menu">
+    <nav class="transition wrapper_wide flex items-center justify-between">
+      <figure>
+        <a href="#">
+          <img src="assets/icons/logo.svg" alt="Logo" class="w-12 drop-shadow-main">
+        </a>
+      </figure>
+      <div class="hidden lg:flex gap-32">
+        <nav class="flex gap-12 text-text uppercase">
+          <a href="#" class="transition text-md hover:text-main hover:drop-shadow-sec">Home</a>
+          <a href="#about" class="transition text-md hover:text-main hover:drop-shadow-sec">Sobre mim</a>
+          <a href="#works" class="transition text-md hover:text-main hover:drop-shadow-sec">Projetos</a>
+          <a href="#contact" class="transition text-md hover:text-main hover:drop-shadow-sec">Contato</a>
+        </nav>
+        <div class="text-sm flex gap-1 font-[300]">
+          <a href="#" class="text-main drop-shadow-main font-[800]">PT</a>
+          <span class="text-text_dark">|</span>
+          <a href="#" class="text-text transition">EN</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- hero -->
+  <main class="h-screen flex items-center justify-center relative">
+    <div class="wrapper_hero">
+      <div class="text-text text-4xl sm:text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-[600] flex flex-col gap-1 sm:gap-2 md:gap-3 text-nowrap">
+        <h1>
+          <span class="text-main drop-shadow-main">
+            Front-end
+          </span>
+          Developer
+        </h1>
+        <h1>
+          <span class="text-main drop-shadow-main">
+            Mobile
+          </span>
+          Developer
+        </h1>
+        <h1>
+          <span class="text-main drop-shadow-main">
+            UI
+          </span>
+          Designer
+        </h1>
+      </div>
+    </div>
+
+    <footer class="wrapper_hero absolute bottom-0 flex items-end justify-between pb-10">
+      <div class="flex items-center gap-8">
+        <figure>
+          <a href="#" target="_blank">
+            <img src="assets/icons/whatsapp.svg" alt="Whatsapp icon" class="drop-shadow-sec">
+          </a>
+        </figure>
+        <figure>
+          <a href="https://bit.ly/linkedin-hugoqueiroz" target="_blank">
+            <img src="assets/icons/linkedin.svg" alt="Linkedin icon" class="drop-shadow-sec">
+          </a>
+        </figure>
+        <figure>
+          <a href="mailto:hq.hugoqueiroz@gmail.com" target="_blank">
+            <img src="assets/icons/email.svg" alt="E-mail icon" class="drop-shadow-sec">
+          </a>
+        </figure>
+      </div>
+      <a href="#" class="text-text uppercase text-md transition text-md hover:text-main flex items-center">
+        Currículo
+        <img src="assets/icons/arrow.svg" alt="Arrow" class="ml-2 drop-shadow-tert">
+      </a>
+    </footer>
+
+    <!-- liquid -->
+    <div class="fixed z-[-999] top-0 left-0 overflow-hidden h-screen w-screen m-auto">
+      <canvas class="w-full h-full" id="liquid"></canvas>
+    </div>
+  </main>
+
+  <!-- about -->
+  <section class="bg-bg" id="about">
+    <div class="wrapper flex justify-between items-center">
+      <div class="w-full lg:w-1/2">
+        <span class="text-main text-[0.8rem] sm:text-[.95rem] font-[500] uppercase pl-[-150px] drop-shadow-sec">Sobre mim</span>
+        <h2 class="text-text text-5xl xl:text-6xl font-[600]">Hugo Queiroz</h2>
+        <p class="text-text_dark text-lg mt-4 leading-relaxed">Desenvolvedor Front-End Web/Mobile e UI Designer, com mais de 6 anos de experiência em desenvolvimento de produtos, serviços e na criação de interfaces modernas. Com competências em design, animação e programação, meu maior objetivo é sempre buscar pela criação de interfaces que ofereçam experiências incríveis.</p>
+        <p class="text-text_dark font-[300] text-lg mt-4 mb-2">Interesses pessoais:</p>
+        <div class="text-text text-lg font-[300] flex flex-row gap-10">
+          <div class="flex flex-col gap-2">
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Tecnologia
+            </p>
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Games
+            </p>
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Música
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Animais
+            </p>
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Futebol
+            </p>
+            <p class="flex items-center">
+              <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+              Cultura Pop
+            </p>
+          </div>
+        </div>
+      </div>
+      <figure class="flex-1 hidden lg:flex ml-12">
+        <img src="assets/images/avatar/1.5.png" alt="Hugo Queiroz" class="object-cover w-[460px] h-[360px] rounded bg-about_gradient">
+      </figure>
+    </div>
+
+    <div class="wrapper flex justify-between mt-8 flex-col lg:flex-row">
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-text text-4xl xl:text-5xl font-[600]">O que eu faço?</h2>
+        <p class="text-text_dark text-lg mt-3 leading-relaxed">Como Front-End e Designer, minha especialidade é criar incríveis experiências tanto na web quanto no mobile. Utilizo das tecnologias mais atuais do mercado para trazer uma percepção mais agradável ao usuário e um código limpo.</p>
+      </div>
+      <div class="text-text text-lg flex flex-col gap-2 flex-1 font-[300] ml-0 lg:ml-12 mt-6 lg:mt-12">
+        <p class="flex items-center">
+          <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+          Produtos modernos e resposivos
+        </p>
+        <p class="flex items-center">
+          <img src="assets/icons/check.svg" alt="Check icon" class="mr-4 w-4 drop-shadow-tert">
+          Experiências incríveis
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- == -->
+  <div class="relative wrapper_hero h-[70px] md:h-[80px] lg:h-[84px] overflow-hidden flex before:content-[''] before:w-[100px] before:h-[84px] before:bg-faixa_gradient before:absolute before:top-0 before:left-0 before:z-20 after:content-[''] after:w-[100px] after:h-[84px] after:bg-faixa_gradient_invert after:absolute after:top-0 after:right-0 after:z-20">
+    <div class="flex before:content-[''] before:w-full before:h-[1px] before:bg-radial before:absolute before:top-0 after:content-[' '] after:w-full after:h-[1px] after:bg-radial after:absolute after:bottom-0">
+      <div class="animate-infinite_horizontal_scroll w-full flex items-center justify-between text-text text-lg py-6 gap-8 md:gap-16 lg:gap-24 whitespace-nowrap">
+        <span>Design</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Desenvolvimento Front-End</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Criatividade</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Digital</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>UI</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Interface</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Experiência</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Design</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Desenvolvimento Front-End</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Criatividade</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Digital</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>UI</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Interface</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Experiência</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- works -->
+  <section class="bg-bg" id="works">
+    <div class="wrapper">
+      <header class="flex justify-between flex-col w-full">
+        <span class="text-main text-[0.8rem] sm:text-[.95rem] font-[500] uppercase pl-[-150px] drop-shadow-sec">Projetos</span>
+        <h2 class="text-text text-4xl sm:text-5xl xl:text-6xl font-[600]">Projetos Selecionados</h2>
+        <p class="text-text_dark text-lg mt-4 leading-relaxed">Trabalhos mais recentes e relevantes, selecionados por finalidade e identidade.<br> Projetos únicos com desafios variados.</p>
+        <p class="text-text_dark text-lg mt-4 leading-relaxed"><span class="text-main">*</span> Atualização de projetos <span class="text-main">em breve</span></p>
+      </header>
+
+      <!-- work list -->
+      <div>
+        <!-- #1 -->
+        <a href="#" class="group">
+          <div class="flex justify-between mt-8 gap-6 bg-bg_dark rounded-md transition border-2 border-transparent group-hover:border-bg_light overflow-hidden relative">
+            <div class="w-full lg:w-1/2 p-12 flex flex-col justify-between">
+              <div>
+                <span class="text-main font-[300] text-xl drop-shadow-tert">01.</span>
+                <h3 class="text-text text-4xl xl:text-5xl font-[500]">Landing Page</h3>
+                <p class="text-text_dark text-lg mt-4 leading-relaxed font-[400]">Landing page criada para a Criativa Agência Digital - Desenvolvida a partir de um design moderno, intuitivo e minimalista. Design responsivo e acessivel para todos.</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-text_dark font-[300] text-sm">Desenvolvido com:</p>
+                <div class="text-text flex flex-row gap-2 mt-2 flex-wrap">
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">HTML</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">CSS</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Javascript</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Tailwind</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Strapi CMS</span>
+                </div>
+              </div>
+            </div>
+            <figure class="flex-1 overflow-hidden hidden lg:flex">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2684&q=80" alt="Work Image" class="object-cover w-full h-full transition group-hover:brightness-50">
+            </figure>
+
+            <div class="absolute top-0 right-0 z-[99] w-full lg:w-1/2 h-full flex items-center justify-center backdrop-blur-md transition opacity-0 group-hover:opacity-100">
+              <button class="text-text bg-main/20 border-2 border-main_dark/40 py-4 px-6 rounded font-[500] flex items-center">Abrir Projeto <img src="assets/icons/arrow.svg" alt="Arrow" class="ml-4 brightness-[100]"></button>
+            </div>
+          </div>
+        </a>
+
+        <!-- #2 -->
+        <a href="#" class="group">
+          <div class="flex justify-between mt-8 gap-6 bg-bg_dark rounded-md transition border-2 border-transparent group-hover:border-bg_light flex-row-reverse overflow-hidden relative">
+            <div class="w-full lg:w-1/2 p-12 flex flex-col justify-between">
+              <div>
+                <span class="text-main font-[300] text-xl drop-shadow-tert">01.</span>
+                <h3 class="text-text text-4xl xl:text-5xl font-[500]">Landing Page</h3>
+                <p class="text-text_dark text-lg mt-4 leading-relaxed font-[400]">Landing page criada para a Criativa Agência Digital - Desenvolvida a partir de um design moderno, intuitivo e minimalista. Design responsivo e acessivel para todos.</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-text_dark font-[300] text-sm">Desenvolvido com:</p>
+                <div class="text-text flex flex-row gap-2 mt-2 flex-wrap">
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">HTML</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">CSS</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Javascript</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Tailwind</span>
+                  <span class="px-3 py-1 bg-bg rounded text-main/50 flex flex-center justify-center w-max h-max text-sm font-[400] border-2 border-main_dark/50 bg-main/5 drop-shadow-main">Strapi CMS</span>
+                </div>
+              </div>
+            </div>
+            <figure class="flex-1 overflow-hidden hidden lg:flex">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2684&q=80" alt="Work Image" class="object-cover w-full h-full transition group-hover:brightness-50">
+            </figure>
+
+            <div class="absolute top-0 left-0 z-[99] w-full lg:w-1/2 h-full flex items-center justify-center backdrop-blur-md transition opacity-0 group-hover:opacity-100">
+              <button class="text-text bg-main/20 border-2 border-main_dark/40 py-4 px-6 rounded font-[500] flex items-center">Abrir Projeto <img src="assets/icons/arrow.svg" alt="Arrow" class="ml-4 brightness-[100]"></button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- == -->
+  <div class="relative wrapper_hero h-[70px] md:h-[80px] lg:h-[84px] overflow-hidden flex before:content-[''] before:w-[100px] before:h-[84px] before:bg-faixa_gradient before:absolute before:top-0 before:left-0 before:z-20 after:content-[''] after:w-[100px] after:h-[84px] after:bg-faixa_gradient_invert after:absolute after:top-0 after:right-0 after:z-20">
+    <div class="flex before:content-[''] before:w-full before:h-[1px] before:bg-radial before:absolute before:top-0 after:content-[' '] after:w-full after:h-[1px] after:bg-radial after:absolute after:bottom-0">
+      <div class="animate-infinite_horizontal_scroll w-full flex items-center justify-between text-text text-lg py-6 gap-8 md:gap-16 lg:gap-24 whitespace-nowrap">
+        <span>Design</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Desenvolvimento Front-End</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Criatividade</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Digital</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>UI</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Interface</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Experiência</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Design</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Desenvolvimento Front-End</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Criatividade</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Digital</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>UI</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Interface</span>
+        <img src="assets/icons/sun.svg" alt="Sun icon divisor" class="drop-shadow-tert">
+        <span>Experiência</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- contact -->
+  <section class="bg-bg" id="contact">
+    <div class="wrapper">
+      <header>
+        <span class="text-main text-[0.8rem] sm:text-[.95rem] font-[500] uppercase pl-[-150px] drop-shadow-sec">Vamos conversar</span>
+        <h2 class="text-text text-3xl sm:text-5xl xl:text-6xl font-[600]">Estou à um clique! <span class="sm:text-36px xl:text-[48px]">👇😁</span></h2>
+      </header>
+      <div class="mt-4 md:mt-12 text-center">
+        <a href="mailto:hq.hugoqueiroz@gmail.com" class="text-main font-[500] drop-shadow-main text-3xl sm:text-5xl xl:text-6xl">hq.hugoqueiroz@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- == -->
+  <div class="relative wrapper_hero">
+    <div class="flex items-center justify-between text-text text-md py-6 before:content-[''] before:w-full before:h-[1px] before:bg-radial before:absolute before:top-0 after:content-[''] after:w-full after:h-[1px] after:bg-radial after:absolute after:bottom-0">
+      <div class="wrapper m-auto flex items-center justify-evenly text-lg text-md gap-8 flex-col sm:flex-row">
+        <a href="https://bit.ly/linkedin-hugoqueiroz" target="_blank" class="flex items-center transition hover:text-main w-auto">
+          <img src="assets/icons/linkedin.svg" alt="Linkedin icon" class="mr-2 w-[15px] mt-[2px]">
+          LinkedIn
+          <img src="assets/icons/arrow.svg" alt="Arrow icon" class="ml-2 w-[8px]">
+        </a>
+        <a href="#" class="flex items-center transition hover:text-main w-auto">
+          <img src="assets/icons/whatsapp.svg" alt="Whatsapp icon" class="mr-2 w-[15px] mt-[2px]">
+          Whatsapp
+          <img src="assets/icons/arrow.svg" alt="Arrow icon" class="ml-2 w-[8px]">
+        </a>
+        <a href="mailto:hq.hugoqueiroz@gmail.com" class="flex items-center transition hover:text-main w-auto">
+          <img src="assets/icons/email.svg" alt="Email icon" class="mr-2 w-[15px] mt-[2px]">
+          Email
+          <img src="assets/icons/arrow.svg" alt="Arrow icon" class="ml-2 w-[8px]">
+        </a>
+        <a href="#" class="flex items-center transition hover:text-main w-auto">
+          <img src="assets/icons/email.svg" alt="CV icon" class="mr-2 w-[15px] mt-[2px]">
+          Currículo
+          <img src="assets/icons/arrow.svg" alt="Arrow icon" class="ml-2 w-[8px]">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="flex bg-bg justify-center items-center py-8">
+    <a href="#">
+      <figure>
+        <img src="assets/icons/logo.svg" alt="Logo">
+      </figure>
+    </a>
+  </footer>
+
+  <!-- js imports -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="js/liquid.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+
+</html>
